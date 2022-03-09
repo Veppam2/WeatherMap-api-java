@@ -42,6 +42,51 @@ public class PeticionWM{
 		
 	}
 
+	public static String pedirDatos(String latitude, String longitude){
+		
+		String ptyJsonSt = "";
+		//HACER PETICION
+		try{
+			HttpResponse <JsonNode> response = Unirest.get( host )
+				.queryString("lat", latitude)
+				.queryString("lon", longitude)
+				.queryString("appid", APP_ID)
+				.asJson();
+			/*
+			System.out.println( response.getStatus() );
+			System.out.println( response.getHeaders().get("Content-Type") );
+			*/
+
+			//Recibir el json
+			Gson gson  = new GsonBuilder().setPrettyPrinting().create();
+			JsonParser jp = new JsonParser();
+			JsonElement je = jp.parse( response.getBody().toString() );
+			ptyJsonSt = gson.toJson(je);
+			
+			//System.out.println(ptyJsonSt);
+			
+			/*
+			Object obj = new JSONParser().parse(ptyJsonSt);
+			JSONObject jo = (JSONObject) obj;
+
+			//ejemplo main jsonwm
+			Map m = ( (Map) jo.get("main") );
+			for( Map.Entry pair : (Set<Map.Entry>) m.entrySet()){
+				System.out.println(
+					pair.getKey() + " : " + pair.getValue()	
+				);
+			}
+			*/
+	
+
+		}catch(UnirestException ee){
+			System.out.println("Unirest problem");
+		}
+	
+		return ptyJsonSt;
+
+	}
+
 	public static void hacerPeticion(){
 
 
@@ -75,8 +120,7 @@ public class PeticionWM{
 			for( Map.Entry pair : (Set<Map.Entry>) m.entrySet()){
 				System.out.println(
 					pair.getKey() + " : " + pair.getValue()		
-				);
-				
+				);	
 			}
 
 		}catch(ParseException e ){
