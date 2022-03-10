@@ -1,0 +1,63 @@
+\documentclass[30pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[
+  top=2cm,
+  bottom=2cm,
+  left=1.5cm,
+  right=1.5cm,
+  heightrounded]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{url}
+%\usepackage{hyperref}
+%\usepackage{cite}
+
+\pdfminorversion=5
+
+\title{Proyecto01: Web Service}
+
+\author{Integrantes:\\
+    Arizmendi López Alexis de Jesús\\
+    Cortés Jiménez Carlos Daniel\\
+    Cruz Hérnandez Víctor Emiliano}
+\date{10/03/2022.}
+
+\theoremstyle{definition}
+
+\renewcommand{\labelitemi}{$\bullet$}%Esto es para que en las listas aparezca un punto en ligar de un cuadrado feo.
+
+
+\begin{document}
+\maketitle
+
+\section{\LARGE Definición del problema}
+
+{\large En este proyecto nos centramos en la elaboracion de un web service para el aeropuerto de la cuidad de México, en el cual se realizará un programa para consultar características, e informacion relevante de un punto A a otro punto B(\textbf{en este caso ciudades}) para ello nos apoyaremos sobre otro web service para conocer la inforacion requerida para la solucion del problema planteado, como lo es OpenWeatherMap que nos proposrciona datos metereorologicos historicos y actuales.} 
+
+
+\section{Análisis del problema}
+
+{\large Empecemos por el informe del clima de la ciudad, para lograr esto como anterirormente se menciono utilizremos OpenWeatherMap para mostrar informe de la ciudad en la que se encuentra el cline o usuario y dezplegarla por pantalla caracteristicas como temperatura de la ciudad, la humedad, la presion, la longitud, latitud y el tipo de clima en la ciudad que se ecnuentra asi como tambien mostrar todas estas caracteristicas a la ciudad a la que se dirige dicha persona, un dato importante a resaltar es que el programa no es interactivo, esto quiere decir que, el usuario no podra manipular dicha aplicacion, si no que la aplicacion misma desplegara toda la informacion sin ser manipulada.\\
+Ademas este despligue de informacion debera realizarse para 3000 tickes una vez que corra el programa, tambien deberemos contar con un archivo .csv donde se tenga el codigo IATA de las ciudades a las que se puede realizar un viaje, para esto se hara dos classes una que contenga la estrcutura para obtner el clima y otra para los vuelos(que contiene el codigo IATA, longitud y latitud de la ciudad origen y destino).\\
+Otra dato a resaltar es que se debera realizar un cache para guardra todos aqueloos datos que sean recurrentes para asi acceder de forma mas rapida a ellos.
+Una vez se tengan hecho todo lo anterior dicho se motrara en terminal por medio de una tabla toda la informacion que debera contener nuestro ticket} 
+
+\section{Selección de la mejor alternativa}
+
+{\large Para a resolucion de este proyecto decidimos usar Apache Maven ya que es un software enfocado a la gestion y manipulacion para la creacion de proyecto en java, asi como para facilitarnos el uso de librerias de teceros, y ademas ayuda mucho a simpleficar la creacion de codigo, y ademas nos ayuda a validar, compilar, "testear"(Pruebas unitarias), verificar y emepaquetar nuestro proyecto, dados esto puntos es por lo que nos decidimos por usarlo para la resolucion rapida y eficaz del proyecto.}\\
+
+
+\section{Diagrama de flujo o pseudocódigo}
+
+\newpage    
+\section{Finalmente piensa a futuro}
+
+{\large Se podrian mejorar varias muchos aspectos uno de ellos seria aumentar la capacidad de tickets que se tiene en primera instancia del problema, ya que esto podria provocar un saturamiento de la pagina y poder hacerla colapsar, otro punto seria poder hacerla interactiva algo con lo que el usuario o persona pueda sentirse mas comodo al usar nuestros servicios, implemnetar una interfaz grafica mas amigable para el usuario, tambien requerira a futuro mantenimiento para una version actualizada a dicho web service que se realizara, actualizacion de redes, implementar una pagina web. } 
+
+\end{document}
+
