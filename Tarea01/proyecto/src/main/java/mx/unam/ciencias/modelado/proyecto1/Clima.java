@@ -1,13 +1,11 @@
 package mx.unam.ciencias.modelado.proyecto1;
 
 //---------
-import java.util.List;
-import java.util.LinkedList;
-
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 //---------
+
+import java.io.Serializable;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -19,7 +17,7 @@ import org.json.simple.parser.*;
  * @author Alexis de Jesús Arizmendi López
  * @author Víctor Emiliano Cruz Hérnandez
  */
-  public class Clima{
+  public class Clima implements Serializable{
 
   	private String ciudad;
   	private String temperatura;
@@ -41,7 +39,7 @@ import org.json.simple.parser.*;
 
 		String json  = 	PeticionWM.pedirDatos(this.latitud, this.longitud);
 
-		System.out.println(json);
+		//System.out.println(json);
 		
 		try{	
 			Object obj = new JSONParser().parse( json );
@@ -62,9 +60,9 @@ import org.json.simple.parser.*;
 				temp_max : 296.72
 				 */
 
-				System.out.println(
+				/*System.out.println(
 					pair.getKey() + " : " + pair.getValue()		
-				);
+				);*/
 
 				String k = String.valueOf( pair.getKey() );
 				String v = String.valueOf( pair.getValue() );
@@ -75,7 +73,7 @@ import org.json.simple.parser.*;
 					this.presionA = v;
 				else if (  k.equals("humidity") )
 					this.humedad = v;
-				else if (  k.equals("temp") )
+				else if (  k.equals("pressure") )
 					this.presionA = v;
 			}
 			
@@ -96,10 +94,10 @@ import org.json.simple.parser.*;
       			          }
 				],
 				*/
-
-				System.out.println(
+				
+				/*System.out.println(
 					pair.getKey() + " : " + pair.getValue()	
-				);
+				);*/
 				
 				String k = String.valueOf( pair.getKey() );
 				String v = String.valueOf( pair.getValue() );
@@ -207,5 +205,24 @@ import org.json.simple.parser.*;
   	public String getHumedad(){
   		return humedad;
   	}
+	  /**
+  	 * Metodo get que devuelve String con una mejor explicación del clima
+  	 * @return devuelve la humedad del lugar en el que se encuentre
+  	 */
+  	public String getDescripcionDelClima(){
+		return descClima;
+	}
+
+	@Override
+	public String toString() {
+		String s = new String(
+			"Lugar: "+ this.ciudad+"\n"+
+			"Clima: "+ this.tipoclima+"\n"+
+			"descClima: "+ this.descClima+"\n"+
+			"Presión: "+ this.presionA+"\n"+
+			"Humedad: "+ this.humedad
+		);
+		return s;
+	}
 
   }

@@ -1,17 +1,14 @@
 package mx.unam.ciencias.modelado.proyecto1;
 
-//----
-import java.util.List;
-import java.util.LinkedList;
-
-import java.util.LinkedHashMap;
+/*
 import java.util.Map;
 import java.util.Set;
 
-import java.util.Iterator;
-//---
+*/
 
-import java.net.URLEncoder; //Prepara url para ser enviada
+import io.github.cdimascio.dotenv.Dotenv;
+
+
 import com.mashape.unirest.http.HttpResponse; //maneja la petición http
 import com.mashape.unirest.http.JsonNode; //Que sea de tipo json
 import com.mashape.unirest.http.Unirest; //Mandar la petición
@@ -22,24 +19,29 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
-import org.json.simple.JSONArray;
+/*
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
-
+*/
 
 //Excepciones
-import java.io.UnsupportedEncodingException;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 public class PeticionWM{
 	
-	private static final String APP_ID = "77f3632a38a2bbcf9fb87b4675fe4ec5";
-	
 	private static String host = "http://api.openweathermap.org/data/2.5/weather";
-	private static String charset = "utf-8";
 
 	private PeticionWM(){
 		
+	}
+
+	private static String getWM_ID(){
+
+		Dotenv dotenv = null;
+		dotenv = Dotenv.configure().load();
+
+		return dotenv.get("WM_ID");
+
 	}
 
 	public static String pedirDatos(String latitude, String longitude){
@@ -50,7 +52,7 @@ public class PeticionWM{
 			HttpResponse <JsonNode> response = Unirest.get( host )
 				.queryString("lat", latitude)
 				.queryString("lon", longitude)
-				.queryString("appid", APP_ID)
+				.queryString("appid", getWM_ID())
 				.asJson();
 			/*
 			System.out.println( response.getStatus() );
@@ -86,6 +88,7 @@ public class PeticionWM{
 		return ptyJsonSt;
 
 	}
+	/*
 
 	public static void hacerPeticion(){
 
@@ -166,4 +169,5 @@ public class PeticionWM{
 		}
 	}
 
+	*/
 }
