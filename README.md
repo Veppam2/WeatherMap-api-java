@@ -12,4 +12,6 @@ java -jar ./target/Proyecto01-jar-with-dependencies.jar [Entrada de archivo .csv
 
 Hay un ejemplo del archivo llamado "dataset1.csv", con él se pueden hacer pruebas
 
+En caso de Ejecutar el .jar sin el archivo por parámetros, se obtendrán los datos de los vuelos con sus respectivos climas desde la caché o se hará una nueva búsqueda en caso de que hayan pasado 5 horas de la última consulta.
+
 
