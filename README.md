@@ -2,6 +2,10 @@
 Primer proyecto de Modelado y Programación semestre 2022-2: Web Services
 
 Instrucciones de ejecución:
+
+Antes de ejecutar el algoritmo es necesario tener una llave para la api de Weather Map. Esta llave debe de estar dada como valor a "WM_ID" en el archivo "Tarea01/proyecto/.env.
+Un ejemplo de este archivo es el .env.example.
+
 En la carpeta Tarea01/proyecto ejecutar "mvn compile assembly:single". Esto generará un archivo dentro de la carpeta Tarea01/proyecto/target llamado "Proyecto01-jar-with-dependencies.jar"
 
 Después basta con ejecutar:
