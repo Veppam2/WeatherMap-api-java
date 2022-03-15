@@ -11,12 +11,14 @@ import java.io.Serializable;
  */
   public class Vuelo implements Serializable{
 
+	private static int numeroDeVuelos;
 
     /** Ciudad de origen del vuelo*/
   	private Lugar origen;
     /** Ciudad de destino del vuelo*/
   	private Lugar destino;
-    /** Latitud de la ciudad de origen del vuelo*/
+    /** Id del vuelo*/
+	private int id;
 
 
 
@@ -25,9 +27,11 @@ import java.io.Serializable;
      * @param origen la ciudad de origen del vuelo.
      * @param destino la ciudad de destino del vuelo.
      */
-    public Vuelo(Lugar o, Lugar d) {
+    public Vuelo(Lugar o, Lugar d, int id) {
+
         this.origen = o;
 		this.destino = d;
+		this.id = id;
     }
 
   	/**
@@ -61,4 +65,23 @@ import java.io.Serializable;
   	public Lugar getDestino(){
   		return destino;
   	}
+
+	public int getId(){
+		return this.id;
+	}
+
+	public static int getNuevoIdDeVuelo(){
+		return numeroDeVuelos++;
+	}
+
+	@Override
+	public boolean equals(Object objeto){
+		if (objeto == null || getClass() != objeto.getClass())
+            return false;
+
+    	Vuelo recibido = (Vuelo)objeto;
+
+		return (this.id == recibido.getId());
+        
+	}
   }

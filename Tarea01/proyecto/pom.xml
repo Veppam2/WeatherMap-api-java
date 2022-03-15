@@ -94,7 +94,7 @@
 		<configuration>
 			<archive>
 				<manifest>
-					<mainClass>mx.unam.ciencias.modelado.proyecto1.clasePrincipal</mainClass>
+					<mainClass>mx.unam.ciencias.modelado.proyecto1.ClasePrincipal</mainClass>
 				</manifest>
 			</archive>
 		</configuration>
@@ -105,7 +105,7 @@
               	<configuration>
               	<archive>
 			<manifest>
-				<mainClass>mx.unam.ciencias.modelado.proyecto1.clasePrincipal</mainClass>
+				<mainClass>mx.unam.ciencias.modelado.proyecto1.ClasePrincipal</mainClass>
 			</manifest>
 		</archive>
 		<descriptorRefs>
