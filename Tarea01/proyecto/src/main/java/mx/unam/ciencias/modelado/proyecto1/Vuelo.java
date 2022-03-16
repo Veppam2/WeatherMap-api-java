@@ -25,8 +25,9 @@ import java.io.Serializable;
 
     /**
      * Define el estado inicial de un vuelo.
-     * @param origen la ciudad de origen del vuelo.
-     * @param destino la ciudad de destino del vuelo.
+     * @param o la ciudad de origen del vuelo.
+     * @param d la ciudad de destino del vuelo.
+     * @param id id del vuelo
      */
     public Vuelo(Lugar o, Lugar d, int id) {
 

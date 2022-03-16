@@ -124,42 +124,49 @@ import org.json.simple.parser.*;
 
   	/**
   	 * Metodo set que establece un valor cuidad de tipo String a Clima
+  	 * @param ciudad  la cuidad 
   	 */
   	public void setCuidad(String ciudad){
   		this.ciudad=ciudad;
   	}
   	/**
   	 * Metodo set que establece un valor temperatura de tipo double a Clima
+  	 * @param temperatura  la temperatura de la cuidad
   	 */
   	public void setTemperatura(String temperatura){
   		this.temperatura=temperatura;
   	}
   	/**
   	 * Metodo set que establece un valor tipoclima de tipo String a Clima
+  	 * @param tipoclima el clima de la cuidad
   	 */
   	public void setTipoClima(String tipoclima){
   		this.tipoclima=tipoclima;
   	}
   	/**
   	 * Metodo set que establece un valor latitud de tipo String a Clima
+  	 * @param latitud la latitud de la cuidad
   	 */
   	public void setLatitud( String latitud){
   		this.latitud=latitud;
   	}
   	/**
   	 * Metodo set que establece un valor longitud de tipo String a Clima
+  	 * @param longitud la longitud de la cuidad
   	 */
   	public void setLongitud( String longitud){
   		this.longitud=longitud;
   	}
   	/**
   	 * Metodo set que establece un valor presionA de tipo String a Clima
+  	 * @param presionA la presion atmosferica de la cuidad
   	 */
   	public void setPresionA( String presionA){
   		this.presionA=presionA;
   	}
   	/**
   	 * Metodo set que establece un valor humedad de tipo String a Clima
+  	 * @param humedad la humedad de la cuidad
   	 */
   	public void setHumedad( String humedad){
   		this.humedad=humedad;

@@ -57,6 +57,8 @@ public class PeticionWM{
 	}
 	/**
 	 * Devuelve los datos de la latitud, longitud en formato Json
+	 * @param latitude latidud de la cuidad
+	 * @param longitude longitud de la cuidad
 	 * @return formato de los datos en Json
 	 */
 	public static String pedirDatos(String latitude, String longitude){
