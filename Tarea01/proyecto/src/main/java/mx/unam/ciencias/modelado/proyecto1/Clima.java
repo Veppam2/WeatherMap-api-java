@@ -16,6 +16,7 @@ import org.json.simple.parser.*;
  * @author Carlos Daniel Cortes Jimenez
  * @author Alexis de Jesús Arizmendi López
  * @author Víctor Emiliano Cruz Hérnandez
+ * @version 2 15/03/2022
  */
   public class Clima implements Serializable{
 
@@ -28,13 +29,20 @@ import org.json.simple.parser.*;
   	private String presionA;
   	private String humedad;
 
-	
+	/**
+	 * Crea un objeto Clima que recibe como paraetros la ciudad, la latitud y la longitud
+	 * @param c parametro que define la ciudad en el que se encuentre 
+	 * @param lat parametro que define la latitud de la ciudad 
+	 * @param lon parametro que define la longitud de la ciudad
+	 */
 	public Clima(String c, String lat, String lon){
 		this.ciudad = c;
 		this.latitud = lat;
 		this.longitud = lon;
 	}
-
+	/**
+	 * Metodo que asigana la informacion requeirda a la ciudad 
+	 */
 	public void llenarAtributos(){
 
 		String json  = 	PeticionWM.pedirDatos(this.latitud, this.longitud);

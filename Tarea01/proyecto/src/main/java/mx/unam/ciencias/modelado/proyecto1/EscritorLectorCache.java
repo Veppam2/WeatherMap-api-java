@@ -12,6 +12,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
+/**
+ * Define un objeto EscritorLectorCache con atributos predefinidos 
+ * @author Carlos Daniel Cortes Jimenez
+ * @author Alexis de Jesús Arizmendi López
+ * @author Víctor Emiliano Cruz Hérnandez
+ * @version 2 15/03/2022
+ */ 
 public class EscritorLectorCache {
     
     private static final String DIR_FECHA_EJECUCION_DEL_DIA = "src/main/resources/cache/horaEjecucionDelDia.txt";
@@ -20,9 +27,15 @@ public class EscritorLectorCache {
     private static final String DIR_VUELOS = "src/main/resources/cache/vuelos.txt";
     private static final String DIR_LUGARES = "src/main/resources/cache/lugares.txt";
 
-
+    /**
+    * Inicializa un objeto con parametros por defecto
+    */
     private EscritorLectorCache(){}
 
+    /**
+     * Recibe y asigna la última fecha de ejecución que se hizo en la aplicación
+     * @param d representa la fecha de ejecucion
+     */
     public static void escribirUltimaFechaEjecucion(Date d){
 
         FileOutputStream salida = null;
@@ -49,6 +62,10 @@ public class EscritorLectorCache {
         }
 
     }
+    /**
+     * Recibe y asigna la fecha de ejecución que se hace en el dia de la aplicación
+     * @param d representa la fecha de ejecucion
+     */
     public static void escribirFechaEjecucionDelDia(Date d){
 
         FileOutputStream salida = null;
@@ -75,7 +92,10 @@ public class EscritorLectorCache {
         }
 
     }
-
+     /**
+     *  Asigna los climas de las ciudades 
+     * @param climas representa los climas de las ciudades
+     */
     public static void escribirClimas(HashMap<String,Clima> climas){
 
         FileOutputStream salida = null;
@@ -101,7 +121,10 @@ public class EscritorLectorCache {
         }
 
     }
-
+     /**
+     *  Asigan los vuelos que se pueden realizar
+     * @param vuelos representa los vuelos que se hacen 
+     */
     public static void escribirVuelos(LinkedList<Vuelo> vuelos){
 
         FileOutputStream salida = null;
@@ -128,7 +151,10 @@ public class EscritorLectorCache {
         }
 
     }
-
+     /**
+     * Asigna los lugares a lo que se pueden hacer vuelos
+     * @param lugares representa el lugar de la ciudad
+     */
     public static void escribirLugares(HashMap<String,Lugar> lugares){
 
         FileOutputStream salida = null;
@@ -154,7 +180,10 @@ public class EscritorLectorCache {
         }
 
     }
-
+    /**
+     * Realiza una lectura al clima que fue consultado anteriormente y se guardo como consulta recurrente
+     * @return clima de la ciudad
+     */
     public static HashMap<String, Clima> leerCacheClima(){
 
         FileInputStream entrada = null;
@@ -182,7 +211,10 @@ public class EscritorLectorCache {
 
         return diccionario;
     }
-
+     /**
+     * Realiza una lectura al vuelo que fue consultado anteriormente y se guardo como consulta recurrente
+     * @return  el vuelo hecho
+     */
     public static LinkedList<Vuelo> leerCacheVuelos(){
 
         FileInputStream entrada = null;
@@ -210,7 +242,10 @@ public class EscritorLectorCache {
 
         return lista;
     }
-
+     /**
+     * Realiza una lectura al lugar que fue consultado anteriormente y se guardo como consulta recurrente
+     * @return  lugar al que se hizo el vuelo
+     */
     public static HashMap<String, Lugar> leerCacheLugares(){
 
         FileInputStream entrada = null;
@@ -239,7 +274,10 @@ public class EscritorLectorCache {
         return diccionario;
     }
 
-
+    /**
+     * Realiza una lectura a la ultima hora que se ejecuto la aplicación, que fue consultado anteriormente y se guardo como consulta recurrente
+     * @return  hora de ejecucion
+     */
     public static Date leerCacheUltimaHoraEjecucion(){
 
         FileInputStream entrada = null;
@@ -267,6 +305,10 @@ public class EscritorLectorCache {
 
         return hora;
     }
+    /**
+     * Realiza una lectura a la hora del dia que se ejecutó la aplicación, que fue consultado anteriormente y se guardo como consulta recurrente
+     * @return hora de ejecucion
+     */
     public static Date leerCacheHoraEjecucionDelDia(){
 
         FileInputStream entrada = null;

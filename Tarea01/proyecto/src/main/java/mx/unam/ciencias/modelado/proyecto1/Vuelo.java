@@ -8,6 +8,7 @@ import java.io.Serializable;
  * @author Carlos Daniel Cortes Jimenez
  * @author Alexis de Jesús Arizmendi López
  * @author Víctor Emiliano Cruz Hérnandez
+ * @version 2 15/03/2022
  */
   public class Vuelo implements Serializable{
 
@@ -65,11 +66,17 @@ import java.io.Serializable;
   	public Lugar getDestino(){
   		return destino;
   	}
-
+    /**
+     * Devuelve el id del vuelo
+     * @return el id de vuelo
+     */
 	public int getId(){
 		return this.id;
 	}
-
+    /**
+     * Devuelve un nuevo id de vuelo 
+     * @return el número de vueloa nuevos
+     */
 	public static int getNuevoIdDeVuelo(){
 		return numeroDeVuelos++;
 	}

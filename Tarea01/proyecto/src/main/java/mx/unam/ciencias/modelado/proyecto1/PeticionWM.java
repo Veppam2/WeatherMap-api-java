@@ -27,14 +27,26 @@ import org.json.simple.parser.*;
 //Excepciones
 import com.mashape.unirest.http.exceptions.UnirestException;
 
+/**
+ * Define una llamada a la api de OpenWeatherMap
+ * @author Carlos Daniel Cortes Jimenez
+ * @author Alexis de Jesús Arizmendi López
+ * @author Víctor Emiliano Cruz Hérnandez
+ * @version 2 15/03/2022
+ */
 public class PeticionWM{
 	
 	private static String host = "http://api.openweathermap.org/data/2.5/weather";
-
+	/**
+	 * Crea un objeto PeticionWM con parametros por defecto
+	 */
 	private PeticionWM(){
 		
 	}
-
+	/**
+	 * Devuelve la llave de acceso
+	 * @return llave de acceso
+	 */
 	private static String getWM_ID(){
 
 		Dotenv dotenv = null;
@@ -43,7 +55,10 @@ public class PeticionWM{
 		return dotenv.get("WM_ID");
 
 	}
-
+	/**
+	 * Devuelve los datos de la latitud, longitud en formato Json
+	 * @return formato de los datos en Json
+	 */
 	public static String pedirDatos(String latitude, String longitude){
 		
 		String ptyJsonSt = "";
