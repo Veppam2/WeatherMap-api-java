@@ -56,25 +56,26 @@ Una vez se tengan hecho todo lo anterior dicho se motrara en terminal por medio 
 
 1.- Inicio\\
 
-    \hspace{1cm} 2.- maximoNumeroPeticiones = 55;
+    \hspace{1cm} 2.- rutaCSV = "src/main/resources/archivoBoletos/dataset1.csv";
     
-    \hspace{1cm} 3.- maxTiempoCache = ( 1000 * 30 );
+    \hspace{1cm} 3.- maximoNumeroPeticiones = 55;
     
-    \hspace{1cm} 4.- diccionarioRegiones = new HashMap<String, Lugar>();
+    \hspace{1cm} 4.- maxTiempoCache = ( 1000 * 60 * 60 * 5 );
     
-    \hspace{1cm} 5.- diccionarioVuelos = new HashMap<String, Vuelo>();
+    \hspace{1cm} 5.- diccionarioRegiones = new HashMap$<$String, Lugar$>$();
     
-    \hspace{1cm} 6.- diccionarioClimas = new HashMap<String, Clima>();\\
+    \hspace{1cm} 6.- listaVuelos = new HashMap$<$String, Vuelo$>$();
     
-\hspace{1cm} 7.-  meterADiccionarios(String sOrigen, String sDestino, String so\_lat, String so\_lon, String sd\_lat, String sd\_lon);\\
+    \hspace{1cm} 7.- diccionarioClimas = new HashMap<String, Clima>();\\
+    
+\hspace{1cm} 8.-  meterADiccionarios(String sOrigen, String sDestino, String so\_lat, String so\_lon, String sd\_lat, String sd\_lon);\\
 
-    \hspace{2cm} 7.1.- Si ! diccionarioVuelos.containsKey(sOrigen+sDestino)\\
     
-    \hspace{3cm} Lugar origen = null;
+    \hspace{2cm} Inicializamos Lugar origen = null;
     
-    \hspace{3cm} Lugar destino = null;\\
+    \hspace{2cm} Inicializamos Lugar destino = null;\\
     
-    \hspace{4cm} 7.1.1.- Si diccionarioRegiones.containsKey(sOrigen)\\
+    \hspace{3cm} 8.1.- Si diccionarioRegiones.containsKey(sOrigen)\\
     
     \hspace{4cm} origen = diccionarioRegiones.get(sOrigen);\\
     
@@ -88,7 +89,7 @@ Una vez se tengan hecho todo lo anterior dicho se motrara en terminal por medio 
         
   \hspace{5cm} diccionarioClimas.put(sOrigen, clima);\\
   
-    \hspace{4cm} 7.1.2.- Si diccionarioRegiones.containsKey(sDestino)\\
+    \hspace{4cm} 8.1.1.- Si diccionarioRegiones.containsKey(sDestino)\\
     
     \hspace{5cm} destino = diccionarioRegiones.get(sDestino);\\
     
@@ -102,31 +103,35 @@ Una vez se tengan hecho todo lo anterior dicho se motrara en terminal por medio 
         
   \hspace{5cm} diccionarioClimas.put(sDestino, clima);\\
     
-    \hspace{3cm} Además\\
+    \hspace{2cm} Además\\
     
-    \hspace{3cm} Vuelo vuelo = new Vuelo(origen, destino);
+    \hspace{2cm} int id = Vuelo.getNuevoIdDeVuelo();
     
-  \hspace{3cm} diccionarioVuelos.put( (sOrigen+sDestino) , vuelo );\\
+    \hspace{3cm} 8.1.1.1.- Mostramos ''id :''+id
+    
+    \hspace{2cm} Vuelo vuelo = new Vuelo(origen, destino), id;
+    
+    \hspace{2cm} listaVuelos.add(vuelo);\\
   
-    \hspace{1cm} 8.- llenarValoresDiccionarioClima()\\
+    \hspace{1cm} 9.- llenarValoresDiccionarioClima()\\
 
-    \hspace{2cm} 8.1.- Mostramos: diccionarioClimas.size();
+    \hspace{2cm} 9.1.- Mostramos: diccionarioClimas.size();
 
-    \hspace{2cm} 8.2.- Mostramos: "Cargando peticiones...";\\
+    \hspace{2cm} 9.2.- Mostramos: "Cargando peticiones...";\\
 
     \hspace{2cm} inicializamos contador = 0;\\
 
-    \hspace{2cm} 8.3.- Mientras ap.Entry<String,Clima> v:  diccionarioClimas.entrySet() realizamos\\
+    \hspace{2cm} 9.3.- Mientras ap.Entry$<$String,Clima$>$ v:  diccionarioClimas.entrySet() realizamos\\
 
-    \hspace{3cm}8.3.1.- Intenta\\
+    \hspace{3cm}9.3.1.- Intenta\\
 
-    \hspace{4cm}8.3.1.1.- Si contador$>$0 and contador\%maximoNumeroPeticiones==0 \\ \\
+    \hspace{4cm}9.3.1.1.- Si contador$>$0 and contador\%maximoNumeroPeticiones==0 \\ \\
 
-    \hspace{5cm}8.3.1.1.1.- Mostramos: "Hay más de "+maximoNumeroPeticiones+" 
+    \hspace{5cm}9.3.1.1.1.- Mostramos: ''Hay más de ''+maximoNumeroPeticiones+'' 
     
-    \hspace{6.5cm} peticiones, hay que esperar 1 min entre ellas.";\\
+    \hspace{6.5cm} peticiones, hay que esperar 1 min entre ellas.'';\\
     
-    \hspace{5cm}8.3.1.1.2.- Mostramos: "Esperando para un bloque";
+    \hspace{5cm}9.3.1.1.2.- Mostramos: "Esperando para un bloque";
     
     \hspace{6.5cm} Thread.sleep(1000*60);\\
     
@@ -136,47 +141,47 @@ Una vez se tengan hecho todo lo anterior dicho se motrara en terminal por medio 
     
   \hspace{3cm} contador++;\\
 
-    \hspace{3cm}8.3.2.- Atrapa InterruptedException e\\
+    \hspace{3cm}9.3.2.- Atrapa InterruptedException e\\
     
-    \hspace{4cm}8.3.2.1.- Mostramos "ERROR en Esperar peticiones";\\
+    \hspace{4cm}9.3.2.1.- Mostramos ''ERROR en Esperar peticiones'';\\
     
-    \hspace{2cm} 8.4.- Mostramos: "Terminó"\\
+    \hspace{2cm} 9.4.- Mostramos: "Terminó"\\
     
-    \hspace{1cm} 9.- imprimirMenu()\\
+    \hspace{1cm} 10.- imprimirMenu()\\
     
-    \hspace{2cm} 9.1.- Mostramos: "*****************VUELOS************";\\
+    \hspace{2cm} 10.1.- Mostramos: "*****************VUELOS************";\\
     
-    \hspace{2cm} 9.2.- Mientras Map.Entry<String,Vuelo> v:  diccionarioVuelos.entrySet() realizamos\\
+    \hspace{2cm} 10.2.- Mientras Vuelo v: listaVuelos realizamos\\
     
-    \hspace{3cm} o = v.getValue().getOrigen().getId();
+    \hspace{3cm} String origen = v.getOrigen().getId();
     
-  \hspace{3cm} String d = v.getValue().getDestino().getId();\\
+  \hspace{3cm} String destino = v.getDestino().getId();\\
 
-  \hspace{3cm} t\_o = diccionarioClimas.get(o).getTemperatura();
+  \hspace{3cm} String temp\_origen = diccionarioClimas.get(origen).getTemperatura();
   
-  \hspace{3cm} t\_d = diccionarioClimas.get(d).getTemperatura();\\
+  \hspace{3cm} String temp\_destino = diccionarioClimas.get(destino).getTemperatura();\\
 
-  \hspace{3cm} c\_o = diccionarioClimas.get(o).getTipoClima();
+  \hspace{3cm} String clima\_origen = diccionarioClimas.get(origen).getTipoClima();
   
-  \hspace{3cm} c\_d = diccionarioClimas.get(d).getTipoClima();\\
+  \hspace{3cm} String clima\_destino = diccionarioClimas.get(destino).getTipoClima();\\
 
-  \hspace{3cm} dc\_o = diccionarioClimas.get(o).getDescripcionDelClima();
+  \hspace{3cm} String descClima\_origen = diccionarioClimas.get(origen).getDescripcionDelClima();
   
-  \hspace{3cm} dc\_d = diccionarioClimas.get(d).getDescripcionDelClima();\\
+  \hspace{3cm} String descClima\_destino = diccionarioClimas.get(destino).getDescripcionDelClima();\\
 
-  \hspace{3cm} p\_o = diccionarioClimas.get(o).getPresionA();
+  \hspace{3cm} String presion\_origen = diccionarioClimas.get(origen).getPresionA();
   
-  \hspace{3cm} p\_d = diccionarioClimas.get(d).getPresionA();\\
+  \hspace{3cm} String presion\_destino = diccionarioClimas.get(destino).getPresionA();\\
 
-  \hspace{3cm} h\_o = diccionarioClimas.get(o).getHumedad();
+  \hspace{3cm} String humedad\_origen = diccionarioClimas.get(origen).getHumedad();
   
-  \hspace{3cm} h\_d = diccionarioClimas.get(d).getHumedad();\\
+  \hspace{3cm} String humedad\_destino = diccionarioClimas.get(destino).getHumedad();\\
   
   \hspace{3cm} dataO = String.format(
   
   \hspace{3cm} "\%-10s \%-10s \%-15s \%-10s \%-10s \%-10s",
   
-    \hspace{3cm} o, \hspace{0.5cm} c\_o, \hspace{0.5cm}t\_o, \hspace{0.5cm}dc\_o, \hspace{0.5cm}p\_o, \hspace{0.5cm}h\_o
+    \hspace{3cm} origen, \hspace{0.5cm} clima\_origen, \hspace{0.5cm}temp\_origen, \hspace{0.5cm} descClima\_origen, \hspace{0.5cm}presion\_origen, \hspace{0.5cm}humedad\_origen
     
   \hspace{3cm} );\\
 
@@ -184,67 +189,83 @@ Una vez se tengan hecho todo lo anterior dicho se motrara en terminal por medio 
   
   \hspace{3cm} "\%-10s \%-10s \%-15s \%-10s \%-10s \%-10s",
   
-  \hspace{3cm} d, \hspace{0.5cm} c\_d, \hspace{0.5cm}t\_d, \hspace{0.5cm}dc\_d, \hspace{0.5cm}p\_d,   \hspace{0.5cm}h\_d
+  \hspace{3cm} destino, \hspace{0.5cm} clima\_destino, \hspace{0.5cm}temp\_destino, \hspace{0.5cm} descClima\_destino, \hspace{0.5cm}presion\_destino,  
+  
+    \hspace{3cm}humedad\_destino
     
     \hspace{3cm} );\\ \\
     
-    \hspace{2cm} 9.3.- Mostramos: Vuelo de "+o+" a "+d;
+    \hspace{2cm} 10.3.- Mostramos: Vuelo de ''+origen+'' a ''+destino+''. Ticket: ''+v.getId() ;
     
-    \hspace{2cm} 9.4.- Mostramos: "->Origen: "+dataO+"\n->Destino: "+dataD+"\n";
+    \hspace{2cm} 10.4.- Mostramos: ''-$>$Origen: ''+dataO+''/n-$>$Destino: ''+dataD+''/n'';\\
     
-    \hspace{1cm} 10.- main( String[] args )\\
+    \hspace{1cm} 11.- main( String[] args )\\
     
-    \hspace{2cm} 10.1.- Si args.length $>$0 entonces \\
+    \hspace{2cm} Date ahora = new Date();
     
-    \hspace{3cm} 10.1.1.- Mostramos ''Crea desde csv nuevo";\\
+  \hspace{2cm} Date primeraEjecucionDelDia = EscritorLectorCache.leerCacheHoraEjecucionDelDia();
+  
+  \hspace{2cm} long tiempo24Horas = (1000 * 60 * 60 * 24);
+  
+  \hspace{2cm} long diferencia = 0;\\
     
-    \hspace{3cm} Además\\
+    \hspace{3cm} 11.1.- Si primeraEjecucionDelDia != null entonces \\
     
-    \hspace{3cm} Date fechaEjecucion = new Date();
+    \hspace{4cm} diferencia = ahora.getTime() - primeraEjecucionDelDia.getTime();\\
     
-    \hspace{3cm} CSVReader reader = null;
+    \hspace{5cm} De lo contrario\\
     
-    \hspace{3cm} String rutaCSV = args[0];\\
+    \hspace{5cm} diferencia =  tiempo24Horas *2;\\
     
-    \hspace{4cm} 10.1.1.1.- Intenta \\
+    \hspace{4cm} 11.1.1.- Si diferencia $>$= tiempo24Horas\\
     
-    \hspace{4cm} reader = new CSVReader( new FileReader(rutaCSV.replaceAll("/","//")) );
+    \hspace{5cm} 11.1.1.1.- Mostramos ''Crea desde csv nuevo";\\
+    
+    \hspace{5cm} CSVReader reader = null;\\
+    
+    \hspace{5cm} 11.1.1.1.- Intenta \\
+    
+    \hspace{6cm} reader = new CSVReader( new FileReader(rutaCSV.replaceAll("/","//")) );
 
-    \hspace{4cm} String[] linea = reader.readNext();\\
+    \hspace{6cm} String[] linea = reader.readNext();\\
     
-    \hspace{5cm} Mientras (linea = reader.readNext()) != null \\
+    \hspace{6cm} Mientras (linea = reader.readNext()) != null \\
     
-    \hspace{5cm} sOrigen  = linea[0];
+    \hspace{7cm} sOrigen  = linea[0];
     
-  \hspace{5cm} sDestino  = linea[1];
+  \hspace{7cm} sDestino  = linea[1];
   
-  \hspace{5cm} so\_lat  = linea[2];
+  \hspace{7cm} so\_lat  = linea[2];
   
-  \hspace{5cm} so\_lon  = linea[3];
+  \hspace{7cm} so\_lon  = linea[3];
   
-  \hspace{5cm} sd\_lat  = linea[4];
+  \hspace{7cm} sd\_lat  = linea[4];
   
-  \hspace{5cm} sd\_lon  = linea[5];\\
+  \hspace{7cm} sd\_lon  = linea[5];\\
+  
+  \hspace{7cm} 101.1.1.1.1- Mostramos "Mete algo"\\
 
-  \hspace{5cm} meterADiccionarios(sOrigen, sDestino, so\_lat, so\_lon, sd\_lat, sd\_lon);\\
+  \hspace{7cm} meterADiccionarios(sOrigen, sDestino, so\_lat, so\_lon, sd\_lat, sd\_lon);\\
   
-  \hspace{4cm} 10.1.1.2.- Atrapa FileNotFoundException e\\
+  \hspace{4cm} 11.1.1.2.- Atrapa FileNotFoundException e\\
   
-  \hspace{5cm} 10.1.1.2.1.- Mostrams: "Error al leer CSV"\\
+  \hspace{5cm} 11.1.1.2.1.- Mostrams: "Error al leer CSV"\\
   
-  \hspace{4cm} 10.1.1.3.- Atrapa IOException ee\\
+  \hspace{4cm} 11.1.1.3.- Atrapa IOException ee\\
   
-  \hspace{5cm} 10.1.1.3.1.- Mostrams: "IOException"\\
+  \hspace{5cm} 11.1.1.3.1.- Mostrams: "IOException"\\
   
-  \hspace{4cm} 10.1.1.4.- Atrapa CsvValidationException eee\\
+  \hspace{4cm} 11.1.1.4.- Atrapa CsvValidationException eee\\
   
-  \hspace{5cm} 10.1.1.4.1.- Mostrams: "CsvValidationExveption"\\
+  \hspace{5cm} 11.1.1.4.1.- Mostrams: "CsvValidationExveption"\\
   
   \hspace{4cm} Además\\
   
   \hspace{4cm} llenarValoresDiccionarioClima();\\
   
-  \hspace{4cm} EscritorLectorCache.escribirFechaEjecucion(fechaEjecucion);
+  \hspace{4cm} EscritorLectorCache.escribirUltimaFechaEjecucion(ahora);
+  
+  \hspace{4cm} EscritorLectorCache.escribirFechaEjecucionDelDia(ahora);\\
   
     \hspace{4cm} EscritorLectorCache.escribirClimas(
     
@@ -260,41 +281,47 @@ Una vez se tengan hecho todo lo anterior dicho se motrara en terminal por medio 
   
   \hspace{4cm} EscritorLectorCache.escribirVuelos(
   
-  \hspace{5cm} (HashMap$<$String,Vuelo$>$) diccionarioVuelos
+  \hspace{5cm} listaVuelos\\
   
-  \hspace{4cm} );\\
+    \hspace{4cm} );\\
   
-  \hspace{4cm} imprimirMenu();\\
+  \hspace{5cm} 11.1.1.4.2.- Mostramos ''número de tickets: ''+listaVuelos.size();
   
-  \hspace{2cm} De lo contario haz\\
+  \hspace{5cm} 11.1.1.4.3.- Mostramos ''número de climas: ''+diccionarioClimas.size();
   
-  \hspace{2cm} Date horaActual = new Date();
+  \hspace{5cm} 11.1.1.4.4.- Mostramos ''número de regiones: ''+diccionarioRegiones.size();
   
-  \hspace{2cm} Date horaAnterior = EscritorLectorCache.leerCacheHoraEjecucion();\\
+  \hspace{5cm} imprimirMenu();\\
+  
+  \hspace{3cm} De lo contario haz\\
+  
+  \hspace{3cm} Date horaActual = new Date();
+  
+  \hspace{3cm} Date horaAnterior = EscritorLectorCache.leerCacheUltimaHoraEjecucion();\\
 
-  \hspace{2cm} long diferencia = horaActual.getTime() - horaAnterior.getTime();\\
+  \hspace{3cm} long diferencia2 = horaActual.getTime() - horaAnterior.getTime();\\
 
-  \hspace{2cm} diccionarioVuelos = EscritorLectorCache.leerCacheVuelos();
+  \hspace{3cm} listaVuelos = EscritorLectorCache.leerCacheVuelos();
   
-  \hspace{2cm} diccionarioRegiones = EscritorLectorCache.leerCacheLugares();
+  \hspace{3cm} diccionarioRegiones = EscritorLectorCache.leerCacheLugares();
   
-  \hspace{2cm} diccionarioClimas = EscritorLectorCache.leerCacheClima();\\
+  \hspace{3cm} diccionarioClimas = EscritorLectorCache.leerCacheClima();\\
   
-  \hspace{2cm} 10.2.- Si diferencia $>$= maxTiempoCache entonces\\
+  \hspace{3cm} 11.2.- Si diferencia2 $>$= maxTiempoCache entonces\\
   
-  \hspace{3cm} 10.2.1.- Mostramos ''más de ''+maxTiempoCache+'' nueva búsqueda"\\
+  \hspace{4cm} 11.2.1.- Mostramos ''más de ''+maxTiempoCache+'' nueva búsqueda"\\
   
-  \hspace{3cm} llenarValoresDiccionarioClima();\\
+  \hspace{5cm} llenarValoresDiccionarioClima();\\
   
-  \hspace{3cm} EscritorLectorCache.escribirFechaEjecucion(horaActual);
+  \hspace{5cm} EscritorLectorCache.escribirUltimaFechaEjecucion(horaActual);
   
-  \hspace{3cm} EscritorLectorCache.escribirClimas(
+  \hspace{5cm} EscritorLectorCache.escribirClimas(
   
-  \hspace{4cm} (HashMap$<$String,Clima$>$) diccionarioClimas
+  \hspace{6cm} (HashMap$<$String,Clima$>$) diccionarioClimas
   
-  \hspace{3cm} );\\
+  \hspace{5cm} );\\
   
-  \hspace{2cm} imprimirMenu();\\
+  \hspace{3cm} imprimirMenu();\\
   
 11.- Fin
 
