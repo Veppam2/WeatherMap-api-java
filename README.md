@@ -1,21 +1,25 @@
-# proyecto-01
-Primer proyecto de Modelado y Programación semestre 2022-2: Web Services
+# WeatherMap-api-java
+OpenWeather's web services api used in simple java project.
 
-Instrucciones de ejecución:
+### Requirements
+* <a href="https://openweathermap.org/appid" target="_blank"> Weather Map api's credentials </a>. It has to be given as value of `WD_ID` in `Tarea01/proyecto/.env` file. Expample can be found in `Tarea01/proyecto/.env.exmple` file.
+* Java and <a href="https://maven.apache.org/" target="_blank"> Maven</a> installed 
 
-Antes de ejecutar el algoritmo es necesario tener una llave para la api de Weather Map. Esta llave debe de estar dada como valor a "WM_ID" en el archivo "Tarea01/proyecto/.env.
-Un ejemplo de este archivo es el .env.example.
+### Use
+In `Tarea01/proyecto` directory execute:
+```
+mvn compile assembly:single
+```
+this will generate the `Proyecto01-jar-with-dependencies.jar` file.
 
-En la carpeta Tarea01/proyecto ejecutar "mvn compile assembly:single". Esto generará un archivo dentro de la carpeta Tarea01/proyecto/target llamado "Proyecto01-jar-with-dependencies.jar"
+You can run tests with:
+```
+mvn install
+```
+and use the system with:
+```
+java -jar ./target/Proyecto01-jar-with-dependencies.jar [file.csv]
+```
+`file.csv` is opcional. We give a dataset test case in `Tarea01/dataset1.csv`.
 
-Después basta con ejecutar:
-mvn install para correr las pruebas 
-
-y para probar el sistema
-java -jar ./target/Proyecto01-jar-with-dependencies.jar [Entrada de archivo .csv]
-
-Hay un ejemplo del archivo llamado "dataset1.csv", con él se pueden hacer pruebas
-
-En caso de Ejecutar el .jar sin el archivo por parámetros, se obtendrán los datos de los vuelos con sus respectivos climas desde la caché o se hará una nueva búsqueda en caso de que hayan pasado 5 horas de la última consulta.
-
-
+In case of ececuting .jar file without file as parámeter we pull flight data from caché if execution of .jar has been in less than 5 hours since last call. 
